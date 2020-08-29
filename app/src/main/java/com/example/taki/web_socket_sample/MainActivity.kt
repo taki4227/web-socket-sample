@@ -3,10 +3,13 @@ package com.example.taki.web_socket_sample
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.taki.web_socket_sample.databinding.ActivityMainBinding
 import dagger.android.support.DaggerAppCompatActivity
 import io.socket.client.IO
 import io.socket.client.Socket
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import okhttp3.*
 import okio.ByteString
 import java.util.concurrent.TimeUnit
@@ -18,7 +21,7 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     @Inject
-    lateinit var repository: Repository
+    lateinit var webSocketRepository: WebSocketRepository
 
     private val socket by lazy {
         val socket = IO.socket("url")
@@ -99,7 +102,19 @@ class MainActivity : DaggerAppCompatActivity() {
             }
         }
 
-        repository.test()
+        binding.scarletConnectButton.setOnClickListener {
+            lifecycleScope.launch {
+                webSocketRepository.observeWebSocketEvent().collect {
+                    Log.d(TAG, "socket: $it")
+                }
+            }
+        }
+
+        binding.scarletSendButton.setOnClickListener {
+            lifecycleScope.launch {
+                webSocketRepository.sendMessage("send text")
+            }
+        }
     }
 
     override fun onDestroy() {

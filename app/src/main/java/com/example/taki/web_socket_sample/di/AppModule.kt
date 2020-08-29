@@ -1,6 +1,7 @@
 package com.example.taki.web_socket_sample.di
 
-import com.example.taki.web_socket_sample.Repository
+import com.example.taki.web_socket_sample.WebSocketRepository
+import com.example.taki.web_socket_sample.web_socket.TestWebSocket
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,5 +11,6 @@ internal object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepository(): Repository = Repository()
+    fun provideWebSocketRepository(testWebSocket: TestWebSocket): WebSocketRepository =
+        WebSocketRepository(testWebSocket)
 }

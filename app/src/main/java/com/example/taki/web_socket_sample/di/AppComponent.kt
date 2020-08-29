@@ -13,6 +13,7 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
+        WebSocketComponentModule::class,
         MainActivityModule.MainActivityBuilder::class
     ]
 )

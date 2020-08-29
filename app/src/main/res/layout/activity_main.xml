@@ -64,6 +64,34 @@
             app:layout_constraintBaseline_toBaselineOf="@id/okhttp_text"
             app:layout_constraintStart_toEndOf="@id/okhttp_connect_button" />
 
+        <TextView
+            android:id="@+id/scarlet_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Scarlet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/okhttp_text" />
+
+        <Button
+            android:id="@+id/scarlet_connect_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="connect"
+            app:layout_constraintBaseline_toBaselineOf="@id/scarlet_text"
+            app:layout_constraintStart_toEndOf="@id/scarlet_text" />
+
+        <Button
+            android:id="@+id/scarlet_send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="send"
+            app:layout_constraintBaseline_toBaselineOf="@id/scarlet_text"
+            app:layout_constraintStart_toEndOf="@id/scarlet_connect_button" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
